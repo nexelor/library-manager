@@ -2,8 +2,11 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
+import { useNavigationHelpers } from "./helper/useNavigationHelper";
 
-function App() {
+export default function App() {
+    const { goToAnime } = useNavigationHelpers();
+
     const [greetMsg, setGreetMsg] = useState("");
     const [name, setName] = useState("");
 
@@ -34,8 +37,15 @@ function App() {
                 <button type="submit">Greet</button>
             </form>
             <p>{greetMsg}</p>
+
+            <div className="row">
+                <button onClick={goToAnime}>Anime</button>
+                <button>Manga</button>
+                <button>Book</button>
+                <button>Movie</button>
+                <button>Serie</button>
+                <button>Global</button>
+            </div>
         </main>
     );
 }
-
-export default App;
